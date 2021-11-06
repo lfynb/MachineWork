@@ -26,11 +26,11 @@ ARC和AKC中的实际样本选择比率如CUB-200-2011数据集实验图2所示�
 可以看出，ARC的样本选择比率正在逐渐增加。这可以看作是一种课程学习。  
 ![sample_ratio](figs/sample_ratio.png)
 
-### Supervised transfer learning 
+### 监督迁移学习
 AKC和ARC都提高了标准迁移学习的性能。
 ![supervised](figs/supervised.png)
 
-### Effectiveness of transfer learning in semi-supervised setting
+### 半监督环境下迁移学习的有效性
 在以前的研究中，人们低估了半监督环境下迁移学习的有效性。
 
 有了印记技术和适当的训练策略，迁移学习可以带来显著的改善，特别是当标记的例子不足时。
