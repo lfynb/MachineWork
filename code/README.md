@@ -41,37 +41,3 @@ The default FixMatch parameters are:
 e.g: Evaluation accuracy during an experiment on CUB_200_2011 dataset with 400 labeled examples as shown below.  
 ![acc_curve](../figs/acc_curve.png)    
 
-### Run on CIFAR-10
-
-1) Pretrain the WideResnet-28-2 on [Imagenet-32 dataset](https://patrykchrabaszcz.github.io/Imagenet32/) with the the pretraining script [pretrain.py](pretrain.py) or download the pretrained WideResnet-28-2 from [here](ssl_lib/models/ckpt/wideresnetleaky_28_2.pth). 
-Then rename the pretrained checkpoint as `wideresnetleaky_28_2.pth`.
-2) run [main.py](main.py) on CIFAR-10 dataset. 
-
-Hyper-parameters of the CIFAR-10 are quite different from CUB-200.  
-The default CIFAR-10 training hyperparameters are:
-` --model wideresnetleaky --depth 28 --widen_factor 2  --lr 0.001 --weight_decay 0.0005 --epochs 200 --l_batch_size 64 --ul_batch_size 448 `
-
-For some of the algorithms, you need to set `--bn_momentum 0.1` (e.g. Fixmatch with pretraining) or  `--bn_momentum 0.001` (e.g. Fixmatch learning from scratch).
-
-The default FixMatch hyperparameters are:    
-` --coef 1.0 --alg pl --strong_aug true --threshold 0.95 --ema_teacher true  --ema_teacher_factor 0.999 --cutout_size 0.5`
-
-The default MixMatch parameters are:   
-`--coef 100 --alpha 0.75 --alg ict --consistency ms --warmup_iter 4000 --ema_teacher true --ema_teacher_train true --ema_teacher_warmup true --ema_teacher_factor 0.999`
-
-As an example, please try the following settings for pre-trained FixMatch on CIFAR-10:
-```
-pretrain_path="ssl_lib/models/ckpt"
-data_root="data"
-dataset=cifar10
-num_labels=40
-arc=0 
-akc=0 
-CUDA_VISIBLE_DEVICES=0 nohup  python -u main.py \
---data_root $data_root --dataset $dataset --num_labels $num_labels --pretrained_weight_path $pretrain_path  \
---model wideresnetleaky --depth 28 --widen_factor 2 --l_batch_size 64 --ul_batch_size 448 \   
---lambda_mmd $arc --lambda_kd $akc  --lr 0.001 --weight_decay 0.0005 --epochs 200  \
---coef 1.0 --alg pl --strong_aug true --threshold 0.95 --ema_teacher true  --ema_teacher_factor 0.999 \
---bn_momentum 0.1  --interleave 0  --seed 10 \
->pretrained_fixmatch_${dataset}_${num_labels}.nohups 2>&1 &
-```
