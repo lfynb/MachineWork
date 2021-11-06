@@ -1,9 +1,5 @@
-# Adaptive Consistency Regularization for Semi-Supervised Transfer Learning
+# 半监督迁移学习的自适应一致性正则化
 
-This repository is for Adaptive Knowledge Consistency and Adaptive Representation Consistency introduced in the following paper:
- 
-Abulikemu Abuduweili, Xingjian Li, Humphrey Shi, Cheng-Zhong Xu, and Dejing Dou, [Adaptive Consistency Regularization for Semi-Supervised Transfer Learning](https://arxiv.org/abs/2103.02193), CVPR 2021.  
- 
 
 ## About the code
 The code is developed on CentOS 6.3 environment (Python 3.6, PyTorch 1.1, CUDA 9.0) with Tesla V100 GPUs.   
