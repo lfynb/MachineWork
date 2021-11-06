@@ -1,4 +1,4 @@
-# Adaptive Consistency Regularization for Semi-Supervised Transfer Learning
+# 半监督迁移学习的自适应一致性正则化
 
 ## Contents
 1. [Introduction](#Introduction)
@@ -13,7 +13,7 @@
 ![model](figs/model.png)
 
 ## Tasks
-### Semi-supervised transfer learning 
+### 半监督迁移学习
 AKC和ARC正则化项可以与其他半监督学习方法相结合，
 
 比如混合匹配和固定匹配。通过在混合匹配中使用AKC和圆弧正则化技术，性能显著提高。
