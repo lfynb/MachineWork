@@ -3,7 +3,6 @@
 ## Contents
 1. [Introduction](#Introduction)
 2. [Tasks](#Tasks)
-3. [Citation](#citation)
 
 
 ## Introduction
